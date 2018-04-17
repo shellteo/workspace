@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ajax</title>
+    <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.js";></script>
+    <script src="https://cdn.bootcss.com/jquery-cookie/1.4.1/jquery.cookie.js";></script>
+    <script src="https://cdn.bootcss.com/fetch/2.0.3/fetch.js"></script>
+</head>
+<body>
+<div id="uploadForm">
+    <input id="file" type="file"/>
+    <button id="upload" type="button">upload</button>
+</div>
+<form enctype="application/x-www-form-urlencoded" action="http://localhost:3000"; method="POST">
+    <input type="text" name="name" value="homeway">
+    <input type="text" name="key" value="nokey">
+    <input type="submit" value="123">
+</form>
+
+<script>
+    $.cookie('ck1', '123');
+    $(function(){
+
+        let formdata = new FormData();
+        formdata.append("UserWxCode", "123");
+        formdata.append("CodeType", "Public");
+
+        /*$.ajax({
+            url:"https://wot.tuhu.work/api/Account/LogOn",
+            type: 'POST',
+            headers: {
+            UserName: 'chenjie1@tuhu.cn',
+            EncryptKey: '7dcff0262c2348dc803f42b32ce0548c16831af5c21d430c88c63e1b5328a00a'
+            },
+            /!*xhrFields: {
+             withCredentials:true //支持附带详细信息
+             },
+             crossDomain: true,*!/
+            data: {
+                "UserWxCode": "123",
+                "CodeType": "Public"
+            },
+            success:function(result){
+                console.log(result);
+            }
+        });
+
+        $.ajax({
+            url:"https://wot.tuhu.work/api/WorkOrderQuery/SelectEmployeeList",
+            type: 'GET',
+            headers: {
+                UserName: 'chenjie1@tuhu.cn',
+                EncryptKey: '7dcff0262c2348dc803f42b32ce0548c16831af5c21d430c88c63e1b5328a00a'
+            },
+            success:function(result){
+                console.log(result);
+            }
+        });*/
+
+        $.ajax({
+            url:"http://localhost:3000",
+            type: 'POST',
+            headers: {
+                token: 123,
+                'Content-Type': 'multipart/form-data'
+            },
+            data: {
+                'user': 'zzz'
+            },
+            success:function(result) {
+                console.log(result);
+            }
+        });
+
+        console.log(formdata);
+        let myHeaders = new Headers({
+            'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8',
+            'token': 123
+        });
+        fetch('http://localhost:3000',{
+            method: 'POST',
+            headers: myHeaders,
+            credentials: 'include',
+            body: formdata//"UserWxCode=123&CodeType=Public"
+        }).then(function(response) {
+            return response.json()
+        }).then(function(json) {
+            console.log('parsed json', json);
+        }).catch(function(ex) {
+            console.log('parsing failed', ex)
+        });
+    });
+    /*let myHeaders = new Headers({
+     'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'
+     });
+     fetch('https://wot.tuhu.cn/api/Account/LogOn';,{
+     method: 'POST',
+     headers: myHeaders,
+     body: "UserWxCode=123&CodeType=Public"
+     }).then(function(response) {
+     return response.json()
+     }).then(function(json) {
+     console.log('parsed json', json);
+     }).catch(function(ex) {
+     console.log('parsing failed', ex)
+     });*/
+    /*$(function(){
+     $('#upload').on('click',function () {
+     var formData = new FormData();
+     console.log($('#file')[0].files);
+     formData.append('file', $('#file')[0].files[0]);
+     console.log(formData);
+     $.ajax({
+     url: '/upload',
+     type: 'POST',
+     cache: false,
+     data: formData,
+     processData: false,
+     contentType: false
+     }).done(function(res) {
+     }).fail(function(res) {});
+     })
+     })*/
+</script>
+</body>
+</html>

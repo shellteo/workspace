@@ -1,0 +1,10 @@
+.idea/
+node_modules/
+dist/
+npm-debug.log
+.cache
+.wepycache
+.vscode
+**/node_modules/
+**/dist/
+**/.idea/

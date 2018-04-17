@@ -1,0 +1,17 @@
+{
+  "name": "mockJS",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "start": "node mock.js"
+  },
+  "devDependencies": {
+    "grunt": "^1.0.1",
+    "mockjs": "^1.0.1-beta3",
+    "mockserver-grunt": "^1.0.42"
+  },
+  "dependencies": {
+    "faker": "^4.1.0"
+  }
+}
